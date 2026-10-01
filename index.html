@@ -25,11 +25,30 @@
     body {
       background-color: var(--bg-color);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       color: var(--text-main);
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Header & Footer Styling */
+    .site-header {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: #999999;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .site-footer {
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-top: 15px;
+      font-weight: 500;
     }
 
     .card {
@@ -94,7 +113,7 @@
       justify-content: center;
       align-items: center;
       gap: 15px;
-      min-height: 120px;
+      min-height: 140px;
       position: relative;
     }
 
@@ -121,6 +140,7 @@
       background-color: #f0f0f0;
       color: #666;
       position: absolute;
+      transition: all 0.15s ease-out;
     }
 
     /* Step 2: Date Pick */
@@ -135,15 +155,15 @@
       font-size: 1rem;
     }
 
-    /* Step 3: Activity Grid */
-    .activity-grid {
+    /* Grid for Options */
+    .grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
       margin-bottom: 20px;
     }
 
-    .activity-item {
+    .option-card {
       border: 2px solid #f5f5f5;
       border-radius: 15px;
       padding: 10px;
@@ -151,24 +171,24 @@
       transition: border-color 0.2s, background-color 0.2s;
     }
 
-    .activity-item.selected {
+    .option-card.selected {
       border-color: var(--primary);
       background-color: #fff9fa;
     }
 
-    .activity-item img {
+    .option-card img {
       width: 100%;
-      height: 100px;
+      height: 95px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 6px;
     }
 
-    .activity-item h4 {
+    .option-card h4 {
       font-size: 0.9rem;
     }
 
-    /* Step 4: Letter */
+    /* Step 5: Letter */
     .letter-card {
       background: #fafafa;
       padding: 20px;
@@ -202,6 +222,11 @@
 </head>
 <body>
 
+  <!-- Header فوق الكارد -->
+  <header class="site-header">
+    Powered by Mounzer El Zein ✨
+  </header>
+
   <div class="card">
     <button class="back-btn" id="backBtn" onclick="prevStep()" style="display: none;">← رجوع</button>
     
@@ -210,11 +235,12 @@
       <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
+      <div class="dot"></div>
     </div>
 
-    <!-- Step 1 -->
+    <!-- Step 1: Proposal -->
     <div class="step-content active" id="step1">
-      <div class="step-header">الخطوة 1 من 4</div>
+      <div class="step-header">الخطوة 1 من 5</div>
       <h2>هل تريد الخروج معي في موعد؟ 🌸</h2>
       <p class="subtitle">سؤال واحد فقط.. وبقية الأمر أسهل مما تتوقع</p>
       
@@ -224,9 +250,9 @@
       </div>
     </div>
 
-    <!-- Step 2 -->
+    <!-- Step 2: Date Picker -->
     <div class="step-content" id="step2">
-      <div class="step-header">الخطوة 2 من 4</div>
+      <div class="step-header">الخطوة 2 من 5</div>
       <h2>متى نلتقي؟ 📅</h2>
       <p class="subtitle">اختر اليوم الذي يناسبك، وسأجعل بقية الأسبوع ينتظر</p>
       
@@ -234,36 +260,48 @@
       <button class="btn btn-primary" style="width: 100%;" onclick="confirmDate()">فقط هذا اليوم! ✨</button>
     </div>
 
-    <!-- Step 3 -->
+    <!-- Step 3: Main Activity -->
     <div class="step-content" id="step3">
-      <div class="step-header">الخطوة 3 من 4</div>
+      <div class="step-header">الخطوة 3 من 5</div>
       <h2>ماذا نفعل؟ ✨</h2>
-      <p class="subtitle">اختر الأنشطة التي تفضلها - يمكنك اختيار أكثر من خيار</p>
+      <p class="subtitle">اختر نشاطاً واحداً نعيشه معاً</p>
       
-      <div class="activity-grid">
-        <div class="activity-item" onclick="toggleActivity(this, 'عشاء 🍽️')">
+      <div class="grid-container">
+        <div class="option-card" onclick="selectActivity(this, 'عشاء 🍽️', 'dinner')">
           <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="عشاء">
           <h4>عشاء 🍽️</h4>
         </div>
-        <div class="activity-item" onclick="toggleActivity(this, 'مشاهدة فيلم 🎬')">
+        <div class="option-card" onclick="selectActivity(this, 'مشاهدة فيلم 🎬', 'movie')">
           <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400" alt="مشاهدة فيلم">
           <h4>مشاهدة فيلم 🎬</h4>
         </div>
-        <div class="activity-item" onclick="toggleActivity(this, 'كزدورة 🚗')">
+        <div class="option-card" onclick="selectActivity(this, 'كزدورة 🚗', 'drive')">
           <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400" alt="كزدورة">
           <h4>كزدورة 🚗</h4>
         </div>
-        <div class="activity-item" onclick="toggleActivity(this, 'زيارة لمنزلكم 🏡')">
+        <div class="option-card" onclick="selectActivity(this, 'زيارة لمنزلكم 🏡', 'visit')">
           <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400" alt="زيارة لمنزلكم">
           <h4>زيارة لمنزلكم 🏡</h4>
         </div>
       </div>
-      <button class="btn btn-primary" style="width: 100%;" onclick="nextStep()">التالي ❤️</button>
+      <button class="btn btn-primary" style="width: 100%;" onclick="confirmActivity()">التالي ❤️</button>
     </div>
 
-    <!-- Step 4 -->
+    <!-- Step 4: Sub Option Page -->
     <div class="step-content" id="step4">
-      <div class="step-header">الخطوة 4 من 4</div>
+      <div class="step-header">الخطوة 4 من 5</div>
+      <h2 id="subTitle">التفاصيل ✨</h2>
+      <p class="subtitle" id="subSubtitle">اختر خياراً واحداً مفضلاً لديكم</p>
+      
+      <div class="grid-container" id="subOptionsContainer">
+        <!-- Sub options will be inserted here via JS -->
+      </div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="confirmSubDetail()">التالي ❤️</button>
+    </div>
+
+    <!-- Step 5: Final Summary -->
+    <div class="step-content" id="step5">
+      <div class="step-header">الخطوة 5 من 5</div>
       <h2>رسالة صغيرة لك 💌</h2>
       
       <div class="letter-card">
@@ -273,52 +311,108 @@
         <div class="summary-box" id="summaryText"></div>
       </div>
 
-      <button class="btn btn-primary" style="width: 100%;" onclick="sendToWhatsApp()">إرسال الاختيارات 💬</button>
+      <button class="btn btn-primary" style="width: 100%;" onclick="sendToWhatsApp()">إرسال الاختيارات عبر واتساب 💬</button>
     </div>
   </div>
+
+  <!-- Footer تحت الكارد -->
+  <footer class="site-footer">
+    Destined to Nour Abou Samra 🤍
+  </footer>
 
   <script>
     let currentStep = 1;
     let selectedDate = '';
-    let selectedActivities = [];
+    let selectedActivity = null; 
+    let selectedActivityType = ''; 
+    let selectedSubDetail = null; 
 
-    // ضع رقم هاتفك هنا مع رمز الدولة (مثلاً للبنان: 96170000000)
-    const MY_PHONE_NUMBER = "96100000000"; 
+    // 📱 رقم الواتساب الخاص بك
+    const MY_PHONE_NUMBER = "96181235853"; 
 
-    // زر "لا" الذي يهرب
+    // 🏃‍♂️️ برمجة الزر الهارب الذكي
     const noBtn = document.getElementById('noBtn');
     const container = document.getElementById('btnContainer');
 
-    noBtn.addEventListener('mouseover', () => {
+    function moveNoButton() {
       const containerRect = container.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
 
-      const maxX = containerRect.width - btnRect.width;
-      const maxY = containerRect.height - btnRect.height;
+      const maxX = (containerRect.width / 2) - (btnRect.width / 2) - 10;
+      const maxY = (containerRect.height / 2) - (btnRect.height / 2) - 10;
 
-      const randomX = Math.floor(Math.random() * maxX) - (maxX / 2);
-      const randomY = Math.floor(Math.random() * maxY) - (maxY / 2);
+      const randomX = (Math.random() * maxX * 2) - maxX;
+      const randomY = (Math.random() * maxY * 2) - maxY;
 
       noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    noBtn.addEventListener('mouseover', moveNoButton);
+    noBtn.addEventListener('click', moveNoButton);
+    noBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      moveNoButton();
     });
+
+    // بيانات الخيارات الفرعية
+    const subOptionsData = {
+      dinner: {
+        title: "ماذا نأكل؟ 🍕",
+        subtitle: "اختر وجبتك المفضلة للمساء",
+        items: [
+          { name: "بيتزا 🍕", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
+          { name: "برغر 🍔", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" },
+          { name: "باستا 🍝", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400" },
+          { name: "دجاج مقلي 🍗", img: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+          { name: "تحلية/حلويات 🍰", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400" }
+        ]
+      },
+      movie: {
+        title: "ماذا نشاهد؟ 🍿",
+        subtitle: "اختر تصنيف الفيلم المفضّل لهذا المساء",
+        items: [
+          { name: "رومنسي 💕", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" },
+          { name: "كوميدي 😂", img: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=400" },
+          { name: "رعب/تشويق 😱", img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" },
+          { name: "أكشن/مغامرة 💥", img: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400" },
+          { name: "أنيميشن/انمي 🎨", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400" }
+        ]
+      },
+      drive: {
+        title: "إلى أين نذهب؟ 🗺️",
+        subtitle: "اختر المكان أو الجو الذي تحبه",
+        items: [
+          { name: "على البحر / الكورنيش 🌊", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400" },
+          { name: "الطبيعة / الجبل 🌲", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400" },
+          { name: "وسط المدينة 🏙️", img: "https://images.unsplash.com/photo-1477959858617-67f30ac4ce78?w=400" },
+          { name: "كافيه لطيف ☕", img: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400" }
+        ]
+      },
+      visit: {
+        title: "تفاصيل الزيارة ☕",
+        subtitle: "ماذا تحب أن أُحضر معي؟",
+        items: [
+          { name: "قهوة / شاي ☕", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" },
+          { name: "قالب كيك / حلويات 🧁", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" },
+          { name: "عصير طازج 🍹", img: "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400" },
+          { name: "فواكه 🍓", img: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400" }
+        ]
+      }
+    };
 
     function updateStep() {
       document.querySelectorAll('.step-content').forEach(step => step.classList.remove('active'));
       document.getElementById(`step${currentStep}`).classList.add('active');
 
       document.querySelectorAll('.dot').forEach((dot, index) => {
-        if (index < currentStep) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
+        dot.classList.toggle('active', index < currentStep);
       });
 
-      document.getElementById('backBtn').style.display = currentStep > 1 && currentStep < 4 ? 'block' : 'none';
+      document.getElementById('backBtn').style.display = currentStep > 1 && currentStep < 5 ? 'block' : 'none';
     }
 
     function nextStep() {
-      if (currentStep < 4) {
+      if (currentStep < 5) {
         currentStep++;
         updateStep();
       }
@@ -341,35 +435,65 @@
       nextStep();
     }
 
-    function toggleActivity(element, activityName) {
-      element.classList.toggle('selected');
-      if (selectedActivities.includes(activityName)) {
-        selectedActivities = selectedActivities.filter(item => item !== activityName);
-      } else {
-        selectedActivities.push(activityName);
+    function selectActivity(element, activityName, typeKey) {
+      document.querySelectorAll('#step3 .option-card').forEach(card => card.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedActivity = activityName;
+      selectedActivityType = typeKey;
+    }
+
+    function confirmActivity() {
+      if (!selectedActivity) {
+        alert('يرجى اختيار نشاط واحد 🌸');
+        return;
       }
+      buildSubPage(selectedActivityType);
+      nextStep();
+    }
+
+    function buildSubPage(typeKey) {
+      const data = subOptionsData[typeKey];
+      document.getElementById('subTitle').innerText = data.title;
+      document.getElementById('subSubtitle').innerText = data.subtitle;
+
+      const container = document.getElementById('subOptionsContainer');
+      container.innerHTML = '';
+      selectedSubDetail = null;
+
+      data.items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'option-card';
+        card.onclick = () => selectSubDetail(card, item.name);
+        card.innerHTML = `<img src="${item.img}" alt="${item.name}"><h4>${item.name}</h4>`;
+        container.appendChild(card);
+      });
+    }
+
+    function selectSubDetail(element, detailName) {
+      document.querySelectorAll('#step4 .option-card').forEach(card => card.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedSubDetail = detailName;
+    }
+
+    function confirmSubDetail() {
+      if (!selectedSubDetail) {
+        alert('يرجى اختيار تفصيل واحد ✨');
+        return;
+      }
+      renderSummary();
+      nextStep();
     }
 
     function renderSummary() {
       const summaryBox = document.getElementById('summaryText');
-      const activitiesText = selectedActivities.length > 0 ? selectedActivities.join('، ') : 'لم يتم اختيار نشاط محدد';
-      summaryBox.innerHTML = `📅 الموعد: ${selectedDate}<br>✨ النشاط: ${activitiesText}`;
-    }
-
-    const originalNextStep = nextStep;
-    nextStep = function() {
-      if (currentStep === 3) {
-        renderSummary();
-      }
-      originalNextStep();
+      summaryBox.innerHTML = `📅 الموعد: ${selectedDate}<br>✨ النشاط: ${selectedActivity}<br>🎯 الاختيار: ${selectedSubDetail}`;
     }
 
     function sendToWhatsApp() {
-      const activitiesText = selectedActivities.length > 0 ? selectedActivities.join('، ') : 'لم يتم اختيار نشاط محدد';
-      const message = `مرحباً! 🌸 لقد اخترت التالي للموعد:\n📅 التاريخ: ${selectedDate}\n✨ النشاط المفضّل: ${activitiesText}`;
+      const message = `مرحباً! 🌸 لقد اخترت التالي للموعد:\n📅 التاريخ: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}`;
       
       const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${0096181235853}?text=${encodedMessage}`, '_blank');
+      window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
     }
   </script>
 </body>
