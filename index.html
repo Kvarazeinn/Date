@@ -478,11 +478,12 @@
     }
 
     function sendToWhatsApp() {
-      const message = `أهلاً منذر 🌸\nموافقة على الدعوة! 🙈💖\nاخترت التفاصيل وبانتظار موعدنا:\n\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}\n\nسيكون مشواراً لا يُنسى! 🫰🏻❤️`;
-      
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
-    }
+  const message = `أهلاً منذر 🌸\nموافقة على الدعوة! 🙈💖\n\nإليك تفاصيل الموعد الذي اخترته:\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}\n\nبانتظار هذا اليوم! 🫰🏻❤️`;
+  
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
+}
+
   </script>
 </body>
 </html>
