@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Header & Footer Styling */
     .site-header {
       font-size: 0.85rem;
       letter-spacing: 1px;
@@ -107,7 +106,6 @@
       display: block;
     }
 
-    /* Step 1: Decision */
     .btn-container {
       display: flex;
       justify-content: center;
@@ -143,7 +141,6 @@
       transition: all 0.15s ease-out;
     }
 
-    /* Step 2: Date Pick */
     input[type="date"] {
       width: 100%;
       padding: 12px;
@@ -155,7 +152,6 @@
       font-size: 1rem;
     }
 
-    /* Grid for Options */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -188,15 +184,14 @@
       font-size: 0.9rem;
     }
 
-    /* Step 5: Letter */
     .letter-card {
       background: #fafafa;
       padding: 20px;
       border-radius: 15px;
       border: 1px dashed #ffd4e0;
-      text-align: right;
+      text-align: center;
       line-height: 1.6;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 20px;
     }
 
@@ -206,6 +201,7 @@
       border-top: 1px solid #eee;
       color: var(--primary);
       font-weight: bold;
+      text-align: right;
     }
 
     .back-btn {
@@ -222,9 +218,8 @@
 </head>
 <body>
 
-  <!-- Header فوق الكارد -->
   <header class="site-header">
-    Powered by Mounzer El Zein ✨
+    POWERED BY MOUNZER EL ZEIN ✨
   </header>
 
   <div class="card">
@@ -238,7 +233,7 @@
       <div class="dot"></div>
     </div>
 
-    <!-- Step 1: Proposal -->
+    <!-- Step 1 -->
     <div class="step-content active" id="step1">
       <div class="step-header">الخطوة 1 من 5</div>
       <h2>هل تريد الخروج معي في موعد؟ 🌸</h2>
@@ -250,7 +245,7 @@
       </div>
     </div>
 
-    <!-- Step 2: Date Picker -->
+    <!-- Step 2 -->
     <div class="step-content" id="step2">
       <div class="step-header">الخطوة 2 من 5</div>
       <h2>متى نلتقي؟ 📅</h2>
@@ -260,7 +255,7 @@
       <button class="btn btn-primary" style="width: 100%;" onclick="confirmDate()">فقط هذا اليوم! ✨</button>
     </div>
 
-    <!-- Step 3: Main Activity -->
+    <!-- Step 3 -->
     <div class="step-content" id="step3">
       <div class="step-header">الخطوة 3 من 5</div>
       <h2>ماذا نفعل؟ ✨</h2>
@@ -287,27 +282,25 @@
       <button class="btn btn-primary" style="width: 100%;" onclick="confirmActivity()">التالي ❤️</button>
     </div>
 
-    <!-- Step 4: Sub Option Page -->
+    <!-- Step 4 -->
     <div class="step-content" id="step4">
       <div class="step-header">الخطوة 4 من 5</div>
       <h2 id="subTitle">التفاصيل ✨</h2>
       <p class="subtitle" id="subSubtitle">اختر خياراً واحداً مفضلاً لديكم</p>
       
-      <div class="grid-container" id="subOptionsContainer">
-        <!-- Sub options will be inserted here via JS -->
-      </div>
-      <button class="btn btn-primary" style="width: 100%;" onclick="confirmSubDetail()">التالي ❤️</button>
+      <div class="grid-container" id="subOptionsContainer"></div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="confirmSubDetail()">التالي ❤</button>
     </div>
 
-    <!-- Step 5: Final Summary -->
+    <!-- Step 5 (الرسالة والتأكيد) -->
     <div class="step-content" id="step5">
       <div class="step-header">الخطوة 5 من 5</div>
       <h2>رسالة صغيرة لك 💌</h2>
       
       <div class="letter-card">
-        من بين كل الأيام، اخترت هذا اليوم لنكون فيه معاً.. ومن بين كل الأفكار والأنشطة، اخترت ما يجعل وقتنا أجمل. ✨
-        <br><br>
-        سأحفظ التاريخ، وسأنتظر هذا الموعد بشوق!
+        اي منيح تقّلي حالك شويّ و ما تقبلي 🙂<br>
+        عم امزح يا عمري 🫠<br>
+        رح يكون اول مشوار و ما رح ينتسى طول العمر 🫰🏻❤️
         <div class="summary-box" id="summaryText"></div>
       </div>
 
@@ -315,7 +308,6 @@
     </div>
   </div>
 
-  <!-- Footer تحت الكارد -->
   <footer class="site-footer">
     Destined to Nour Abou Samra 🤍
   </footer>
@@ -327,10 +319,8 @@
     let selectedActivityType = ''; 
     let selectedSubDetail = null; 
 
-    // 📱 رقم الواتساب الخاص بك
     const MY_PHONE_NUMBER = "96181235853"; 
 
-    // 🏃‍♂️️ برمجة الزر الهارب الذكي
     const noBtn = document.getElementById('noBtn');
     const container = document.getElementById('btnContainer');
 
@@ -354,7 +344,6 @@
       moveNoButton();
     });
 
-    // بيانات الخيارات الفرعية
     const subOptionsData = {
       dinner: {
         title: "ماذا نأكل؟ 🍕",
@@ -490,7 +479,7 @@
     }
 
     function sendToWhatsApp() {
-      const message = `مرحباً! 🌸 لقد اخترت التالي للموعد:\n📅 التاريخ: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}`;
+      const message = `اي منيح تقّلي حالك شويّ و ما تقبلي 🙂\nعم امزح يا عمري 🫠\nرح يكون اول مشوار و ما رح ينتسى طول العمر 🫰🏻❤️\n\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}`;
       
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
@@ -498,3 +487,4 @@
   </script>
 </body>
 </html>
+
