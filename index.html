@@ -479,11 +479,15 @@
     }
 
     function sendToWhatsApp() {
-      const message = `اكيد موافقة يا عمري انا صدقت بدي شوفك و اطلع انا وياك؟🫠❤️\n\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}`;
-      
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
-    }
+  const textMsg = "اكيد موافقة يا عمري انا صدقت بدي شوفك و اطلع انا وياك؟❤️\n\n" +
+                  "📅 الموعد: " + selectedDate + "\n" +
+                  "✨ النشاط: " + selectedActivity + "\n" +
+                  "🎯 الاختيار: " + selectedSubDetail;
+
+  const encodedMessage = encodeURIComponent(textMsg);
+  window.open("https://api.whatsapp.com/send?phone=" + MY_PHONE_NUMBER + "&text=" + encodedMessage, "_blank");
+}
+
   </script>
 </body>
 </html>
