@@ -292,15 +292,14 @@
       <button class="btn btn-primary" style="width: 100%;" onclick="confirmSubDetail()">التالي ❤</button>
     </div>
 
-    <!-- Step 5 (الرسالة والتأكيد) -->
+    <!-- Step 5 -->
     <div class="step-content" id="step5">
       <div class="step-header">الخطوة 5 من 5</div>
       <h2>رسالة صغيرة لك 💌</h2>
       
       <div class="letter-card">
-        اي منيح تقّلي حالك شويّ و ما تقبلي 🙂<br>
-        عم امزح يا عمري 🫠<br>
-        رح يكون اول مشوار و ما رح ينتسى طول العمر 🫰🏻❤️
+        موافقة على دعوتك! 🙈💖<br>
+        اخترت كل التفاصيل بعناية وسأكون بانتظار موعدنا بفارغ الصبر ✨
         <div class="summary-box" id="summaryText"></div>
       </div>
 
@@ -479,7 +478,7 @@
     }
 
     function sendToWhatsApp() {
-      const message = `اي منيح تقّلي حالك شويّ و ما تقبلي 🙂\nعم امزح يا عمري 🫠\nرح يكون اول مشوار و ما رح ينتسى طول العمر 🫰🏻❤️\n\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}`;
+      const message = `أهلاً منذر 🌸\nموافقة على الدعوة! 🙈💖\nاخترت التفاصيل وبانتظار موعدنا:\n\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}\n\nسيكون مشواراً لا يُنسى! 🫰🏻❤️`;
       
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
@@ -487,4 +486,5 @@
   </script>
 </body>
 </html>
+
 
