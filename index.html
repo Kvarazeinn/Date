@@ -298,8 +298,9 @@
       <h2>رسالة صغيرة لك 💌</h2>
       
       <div class="letter-card">
-        موافقة على دعوتك! 🙈💖<br>
-        اخترت كل التفاصيل بعناية وسأكون بانتظار موعدنا بفارغ الصبر ✨
+        اي منيح تقّلي حالك شويّ و ما تقبلي 🙂<br>
+        عم امزح يا عمري 🫠<br>
+        رح يكون اول مشوار و ما رح ينتسى طول العمر 🫰🏻❤️
         <div class="summary-box" id="summaryText"></div>
       </div>
 
@@ -478,14 +479,14 @@
     }
 
     function sendToWhatsApp() {
-  const message = `أهلاً منذر 🌸\nموافقة على الدعوة! 🙈💖\n\nإليك تفاصيل الموعد الذي اخترته:\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}\n\nبانتظار هذا اليوم! 🫰🏻❤️`;
-  
-  const encodedMessage = encodeURIComponent(message);
-  window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
-}
-
+      const message = `أهلاً منذر 🌸\nموافقة على الدعوة! 🙈💖\n\nإليك التفاصيل التي اخترتها لموعدنا:\n📅 الموعد: ${selectedDate}\n✨ النشاط: ${selectedActivity}\n🎯 الاختيار: ${selectedSubDetail}\n\nسيكون مشواراً لا يُنسى! 🫰🏻❤️`;
+      
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
+    }
   </script>
 </body>
 </html>
+
 
 
